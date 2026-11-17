@@ -5,6 +5,8 @@ Si la operación no es posible (por ejemplo, dividir entre cero),
 lanza ValueError con un mensaje claro para el usuario.
 """
 
+import math
+
 
 def sumar(a, b):
     return a + b
@@ -36,3 +38,9 @@ def modulo(a, b):
     if b == 0:
         raise ValueError("no se puede calcular el módulo con divisor cero.")
     return a % b
+
+
+def raiz_cuadrada(numero):
+    if numero < 0:
+        raise ValueError("no existe la raíz cuadrada real de un número negativo.")
+    return math.sqrt(numero)

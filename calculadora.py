@@ -69,6 +69,11 @@ def pedir_modulo():
     return f"{formatear(a)} mod {formatear(b)}", op.modulo(a, b)
 
 
+def pedir_raiz():
+    numero = leer_numero("  Número: ")
+    return f"√{formatear(numero)}", op.raiz_cuadrada(numero)
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -77,6 +82,7 @@ OPERACIONES = {
     "4": ("Básicas", "División", pedir_division),
     "5": ("Avanzadas", "Potencia", pedir_potencia),
     "6": ("Avanzadas", "Módulo", pedir_modulo),
+    "7": ("Avanzadas", "Raíz cuadrada", pedir_raiz),
 }
 
 
