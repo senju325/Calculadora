@@ -28,3 +28,7 @@ def potencia(base, exponente):
     if base < 0 and not float(exponente).is_integer():
         raise ValueError("una base negativa no admite exponentes con decimales.")
     return base ** exponente
+
+
+def modulo(a, b):
+    return a % b

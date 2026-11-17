@@ -63,6 +63,12 @@ def pedir_potencia():
     return f"{formatear(base)} ^ {formatear(exponente)}", op.potencia(base, exponente)
 
 
+def pedir_modulo():
+    a = leer_numero("  Dividendo: ")
+    b = leer_numero("  Divisor: ")
+    return f"{formatear(a)} mod {formatear(b)}", op.modulo(a, b)
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -70,6 +76,7 @@ OPERACIONES = {
     "3": ("Básicas", "Multiplicación", pedir_multiplicacion),
     "4": ("Básicas", "División", pedir_division),
     "5": ("Avanzadas", "Potencia", pedir_potencia),
+    "6": ("Avanzadas", "Módulo", pedir_modulo),
 }
 
 
