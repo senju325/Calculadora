@@ -124,6 +124,13 @@ def pedir_promedio():
     return f"promedio({lista})", op.promedio(numeros)
 
 
+def pedir_redondeo():
+    numero = leer_numero("  Número: ")
+    decimales = leer_entero("  Cantidad de decimales: ")
+    return (f"redondear({formatear(numero)}, {decimales})",
+            op.redondear(numero, decimales))
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -137,6 +144,7 @@ OPERACIONES = {
     "9": ("Otras", "Valor absoluto", pedir_valor_absoluto),
     "10": ("Otras", "Factorial", pedir_factorial),
     "11": ("Otras", "Promedio", pedir_promedio),
+    "12": ("Otras", "Redondeo", pedir_redondeo),
 }
 
 
