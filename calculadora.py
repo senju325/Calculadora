@@ -4,6 +4,8 @@ import math
 
 import operaciones as op
 
+historial = []
+
 
 def leer_numero(mensaje):
     """Pide un número hasta que el usuario escriba uno válido."""
@@ -158,6 +160,8 @@ def mostrar_menu():
             print(f"\n {grupo}")
             grupo_actual = grupo
         print(f"  {clave:>2}. {nombre}")
+    print("\n Historial")
+    print("   H. Ver historial")
     print("\n   0. Salir")
     print("=" * 34)
 
@@ -173,7 +177,18 @@ def ejecutar_operacion(opcion):
     except OverflowError:
         print("  Error: el resultado es demasiado grande.")
         return
-    print(f"  Resultado: {expresion} = {formatear(resultado)}")
+    operacion = f"{expresion} = {formatear(resultado)}"
+    print(f"  Resultado: {operacion}")
+    historial.append(operacion)
+
+
+def mostrar_historial():
+    print("\n-- Historial --")
+    if not historial:
+        print("  El historial está vacío.")
+        return
+    for numero, operacion in enumerate(historial, start=1):
+        print(f"  {numero}. {operacion}")
 
 
 def main():
@@ -185,7 +200,9 @@ def main():
 
             if opcion == "0":
                 break
-            if opcion in OPERACIONES:
+            if opcion == "h":
+                mostrar_historial()
+            elif opcion in OPERACIONES:
                 ejecutar_operacion(opcion)
             else:
                 print("  Opción no válida. Elige una del menú.")
