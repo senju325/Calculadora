@@ -1,10 +1,23 @@
 """Calculadora: menú, lectura de datos y presentación de resultados."""
 
+import math
+
 import operaciones as op
 
 
 def leer_numero(mensaje):
-    return float(input(mensaje))
+    """Pide un número hasta que el usuario escriba uno válido."""
+    while True:
+        texto = input(mensaje).strip().replace(",", ".")
+        try:
+            numero = float(texto)
+        except ValueError:
+            print("  Entrada no válida: escribe un número (por ejemplo 12 o 3.5).")
+            continue
+        if not math.isfinite(numero):
+            print("  Entrada no válida: escribe un número finito.")
+            continue
+        return numero
 
 
 def formatear(numero):
@@ -67,23 +80,35 @@ def mostrar_menu():
     print("=" * 34)
 
 
+def ejecutar_operacion(opcion):
+    _, nombre, ejecutar = OPERACIONES[opcion]
+    print(f"\n-- {nombre} --")
+    try:
+        expresion, resultado = ejecutar()
+    except ValueError as error:
+        print(f"  Error: {error}")
+        return
+    except OverflowError:
+        print("  Error: el resultado es demasiado grande.")
+        return
+    print(f"  Resultado: {expresion} = {formatear(resultado)}")
+
+
 def main():
     print("Bienvenido a la calculadora.")
-    while True:
-        mostrar_menu()
-        opcion = input("Elige una opción: ").strip().lower()
+    try:
+        while True:
+            mostrar_menu()
+            opcion = input("Elige una opción: ").strip().lower()
 
-        if opcion == "0":
-            break
-        if opcion not in OPERACIONES:
-            print("  Opción no válida. Elige una del menú.")
-            continue
-
-        _, nombre, ejecutar = OPERACIONES[opcion]
-        print(f"\n-- {nombre} --")
-        expresion, resultado = ejecutar()
-        print(f"  Resultado: {expresion} = {formatear(resultado)}")
-
+            if opcion == "0":
+                break
+            if opcion in OPERACIONES:
+                ejecutar_operacion(opcion)
+            else:
+                print("  Opción no válida. Elige una del menú.")
+    except (KeyboardInterrupt, EOFError):
+        print()
     print("¡Hasta luego!")
 
 
