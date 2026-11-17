@@ -162,6 +162,7 @@ def mostrar_menu():
         print(f"  {clave:>2}. {nombre}")
     print("\n Historial")
     print("   H. Ver historial")
+    print("   L. Limpiar historial")
     print("\n   0. Salir")
     print("=" * 34)
 
@@ -191,6 +192,12 @@ def mostrar_historial():
         print(f"  {numero}. {operacion}")
 
 
+def limpiar_historial():
+    cantidad = len(historial)
+    historial.clear()
+    print(f"\n  Historial limpiado ({cantidad} operación(es) borrada(s)).")
+
+
 def main():
     print("Bienvenido a la calculadora.")
     try:
@@ -202,6 +209,8 @@ def main():
                 break
             if opcion == "h":
                 mostrar_historial()
+            elif opcion == "l":
+                limpiar_historial()
             elif opcion in OPERACIONES:
                 ejecutar_operacion(opcion)
             else:
