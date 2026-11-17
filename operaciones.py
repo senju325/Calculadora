@@ -63,3 +63,9 @@ def factorial(n):
     for i in range(2, n + 1):
         resultado *= i
     return resultado
+
+
+def promedio(numeros):
+    if not numeros:
+        raise ValueError("se necesita al menos un número para el promedio.")
+    return sum(numeros) / len(numeros)

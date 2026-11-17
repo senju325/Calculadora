@@ -29,6 +29,24 @@ def leer_entero(mensaje):
         print("  Entrada no válida: escribe un número entero, sin decimales.")
 
 
+def leer_lista(mensaje):
+    """Pide varios números separados por espacios (por ejemplo: 4 8 6)."""
+    while True:
+        partes = input(mensaje).replace(",", ".").split()
+        if not partes:
+            print("  Entrada no válida: escribe al menos un número.")
+            continue
+        try:
+            numeros = [float(p) for p in partes]
+        except ValueError:
+            print("  Entrada no válida: separa los números con espacios (ej. 4 8 6).")
+            continue
+        if not all(math.isfinite(n) for n in numeros):
+            print("  Entrada no válida: escribe solo números finitos.")
+            continue
+        return numeros
+
+
 def formatear(numero):
     """Muestra 5.0 como 5 y evita colas como 0.30000000000000004."""
     if isinstance(numero, int):
@@ -100,6 +118,12 @@ def pedir_factorial():
     return f"{n}!", op.factorial(n)
 
 
+def pedir_promedio():
+    numeros = leer_lista("  Números separados por espacios: ")
+    lista = ", ".join(formatear(n) for n in numeros)
+    return f"promedio({lista})", op.promedio(numeros)
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -112,6 +136,7 @@ OPERACIONES = {
     "8": ("Avanzadas", "Porcentaje", pedir_porcentaje),
     "9": ("Otras", "Valor absoluto", pedir_valor_absoluto),
     "10": ("Otras", "Factorial", pedir_factorial),
+    "11": ("Otras", "Promedio", pedir_promedio),
 }
 
 
