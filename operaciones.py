@@ -44,3 +44,7 @@ def raiz_cuadrada(numero):
     if numero < 0:
         raise ValueError("no existe la raíz cuadrada real de un número negativo.")
     return math.sqrt(numero)
+
+
+def porcentaje(porcentaje, cantidad):
+    return cantidad * porcentaje / 100

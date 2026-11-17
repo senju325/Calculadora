@@ -74,6 +74,13 @@ def pedir_raiz():
     return f"√{formatear(numero)}", op.raiz_cuadrada(numero)
 
 
+def pedir_porcentaje():
+    porcentaje = leer_numero("  Porcentaje (%): ")
+    cantidad = leer_numero("  Cantidad: ")
+    return (f"{formatear(porcentaje)}% de {formatear(cantidad)}",
+            op.porcentaje(porcentaje, cantidad))
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -83,6 +90,7 @@ OPERACIONES = {
     "5": ("Avanzadas", "Potencia", pedir_potencia),
     "6": ("Avanzadas", "Módulo", pedir_modulo),
     "7": ("Avanzadas", "Raíz cuadrada", pedir_raiz),
+    "8": ("Avanzadas", "Porcentaje", pedir_porcentaje),
 }
 
 
