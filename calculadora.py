@@ -81,6 +81,11 @@ def pedir_porcentaje():
             op.porcentaje(porcentaje, cantidad))
 
 
+def pedir_valor_absoluto():
+    numero = leer_numero("  Número: ")
+    return f"|{formatear(numero)}|", op.valor_absoluto(numero)
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -91,6 +96,7 @@ OPERACIONES = {
     "6": ("Avanzadas", "Módulo", pedir_modulo),
     "7": ("Avanzadas", "Raíz cuadrada", pedir_raiz),
     "8": ("Avanzadas", "Porcentaje", pedir_porcentaje),
+    "9": ("Otras", "Valor absoluto", pedir_valor_absoluto),
 }
 
 
