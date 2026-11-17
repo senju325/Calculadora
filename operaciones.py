@@ -20,3 +20,11 @@ def multiplicar(a, b):
 
 def dividir(a, b):
     return a / b
+
+
+def potencia(base, exponente):
+    if base == 0 and exponente < 0:
+        raise ValueError("0 no se puede elevar a un exponente negativo.")
+    if base < 0 and not float(exponente).is_integer():
+        raise ValueError("una base negativa no admite exponentes con decimales.")
+    return base ** exponente
