@@ -20,6 +20,15 @@ def leer_numero(mensaje):
         return numero
 
 
+def leer_entero(mensaje):
+    """Pide un número entero (acepta 5 o 5.0, rechaza 5.5)."""
+    while True:
+        numero = leer_numero(mensaje)
+        if numero.is_integer():
+            return int(numero)
+        print("  Entrada no válida: escribe un número entero, sin decimales.")
+
+
 def formatear(numero):
     """Muestra 5.0 como 5 y evita colas como 0.30000000000000004."""
     if isinstance(numero, int):
@@ -86,6 +95,11 @@ def pedir_valor_absoluto():
     return f"|{formatear(numero)}|", op.valor_absoluto(numero)
 
 
+def pedir_factorial():
+    n = leer_entero("  Número entero: ")
+    return f"{n}!", op.factorial(n)
+
+
 # Opción del menú -> (grupo, nombre, función que la ejecuta)
 OPERACIONES = {
     "1": ("Básicas", "Suma", pedir_suma),
@@ -97,6 +111,7 @@ OPERACIONES = {
     "7": ("Avanzadas", "Raíz cuadrada", pedir_raiz),
     "8": ("Avanzadas", "Porcentaje", pedir_porcentaje),
     "9": ("Otras", "Valor absoluto", pedir_valor_absoluto),
+    "10": ("Otras", "Factorial", pedir_factorial),
 }
 
 

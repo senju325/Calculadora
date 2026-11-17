@@ -52,3 +52,14 @@ def porcentaje(porcentaje, cantidad):
 
 def valor_absoluto(numero):
     return abs(numero)
+
+
+def factorial(n):
+    if n < 0:
+        raise ValueError("el factorial solo existe para enteros no negativos.")
+    if n > 1000:
+        raise ValueError("el número es demasiado grande (máximo 1000).")
+    resultado = 1
+    for i in range(2, n + 1):
+        resultado *= i
+    return resultado
